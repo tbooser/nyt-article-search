@@ -3,6 +3,6 @@ import articles from "./articles";
 import currentSearchTerm from "./setCurrentSearchTerm";
 
 export default combineReducers({
-	articles,
-	currentSearchTerm
+  articles,
+  currentSearchTerm
 });
