@@ -1,0 +1,22 @@
+				<form onSubmit={this.handleSubmit}>
+					<label>
+						<input
+							className="search-input-box"
+							id="input-box"
+							type="text"
+							value={this.state.searchTerm}
+							onChange={this.handleChange}
+							autoComplete="off"
+							placeholder="Search"
+						/>
+					</label>
+					<span className="submit-button-container">
+						<button
+							type="button"
+							value="Search"
+							className="search-input-submit-button btn btn-primary"
+						>
+							Search
+						</button>
+					</span>
+				</form>
