@@ -1,17 +1,29 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import Moment from "react-moment";
 import DisplayModal from "./Modal";
+import * as actions from "../../actions/index.js";
 
 class DisplayArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+
+    this.saveArticle = this.saveArticle.bind(this);
+  }
+
+  saveArticle() {
+    this.props.onClick(this.props);
   }
 
   render() {
     return (
       <div className="display-article  list-group-item justify-content-start mb-5 p-3">
-        <i className="far fa-bookmark d-flex justify-content-end" />
+        <i
+          className="far fa-bookmark d-flex justify-content-end"
+          onClick={this.saveArticle}
+        />
         <h4 className="w-100 m-3">{this.props.headline}</h4>
         <h6 className="w-100 m-3 article-date text-primary">
           <Moment>{this.props.date}</Moment>
@@ -23,7 +35,7 @@ class DisplayArticle extends Component {
             target="_blank"
             className="badge badge-warning"
           >
-            <i class="fas fa-glasses" />
+            <i className="fas fa-glasses" />
           </a>
         </h5>
       </div>
@@ -31,4 +43,18 @@ class DisplayArticle extends Component {
   }
 }
 
-export default DisplayArticle;
+const mapStateToProps = state => {
+  return {
+    app: state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: {
+      saveActions: bindActionCreators(actions, dispatch)
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayArticle);

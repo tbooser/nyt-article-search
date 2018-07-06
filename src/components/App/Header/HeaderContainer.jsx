@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import SearchView from "../../Search/SearchView";
 import Header from "./Header";
 
-export default class HeaderContainer extends Component {
+class HeaderContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <div className="header-container container-fluid d-flex justify-content-around mt-4">
@@ -18,3 +25,11 @@ export default class HeaderContainer extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    app: state
+  };
+};
+
+export default connect(mapStateToProps)(HeaderContainer);
