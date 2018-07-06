@@ -13,6 +13,13 @@ class DisplayContainer extends Component {
     this.showSearchTermAndNumberOfResults = this.showSearchTermAndNumberOfResults.bind(
       this
     );
+    this.saveArticle = this.saveArticle.bind(this);
+  }
+
+  saveArticle(article) {
+    console.log("props you are looking for", this.props);
+    console.log(article);
+    this.props.actions.actions.saveArticle(article.headline.main);
   }
 
   renderArticles() {
@@ -29,6 +36,7 @@ class DisplayContainer extends Component {
               headline={article.headline.main}
               url={article.web_url}
               date={article.pub_date}
+              onClick={() => this.saveArticle(article)}
             />
           );
         }
@@ -76,7 +84,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     actions: {
-      searchActions: bindActionCreators(actions, dispatch)
+      actions: bindActionCreators(actions, dispatch)
     }
   };
 };
