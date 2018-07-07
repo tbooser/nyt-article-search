@@ -5,6 +5,8 @@ const SavedButton = withRouter(({ history }) => (
   <div className="button-saved">
     <button
       type="button"
+      className="btn btn-primary"
+      type="button"
       onClick={() => {
         history.push("/saved");
       }}
