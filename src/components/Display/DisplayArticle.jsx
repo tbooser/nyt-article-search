@@ -27,7 +27,7 @@ class DisplayArticle extends Component {
           onMouseEnter={this.bookmarkHoverState.bind(this)}
         />
         <h4 className="w-100 m-3">{this.props.headline}</h4>
-        <h6 className="w-100 m-3 article-date text-primary">
+        <h6 className="w-100 m-3 article-date text-info">
           <Moment>{this.props.date}</Moment>
         </h6>
         <div className="w-100 m-3">{this.props.snippet}</div>

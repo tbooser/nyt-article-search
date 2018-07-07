@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../../actions/index.js";
 import SavedView from "./SavedView";
-import HomeButton from "../App/Buttons/Home";
+import SavedHeader from "./SavedHeader";
 
 export class SavedContainer extends Component {
   constructor(props) {
@@ -22,6 +22,9 @@ export class SavedContainer extends Component {
         <SavedView
           key={Math.random()}
           headline={article.article.headline.main}
+          snippet={article.article.snippet}
+          url={article.article.web_url}
+          date={article.article.pub_date}
         />
       );
     });
@@ -30,8 +33,10 @@ export class SavedContainer extends Component {
   render() {
     return (
       <div>
-        <HomeButton />
-        {this.renderSaved()}
+        <SavedHeader title="Saved Articles" />
+        <div className="container">
+          <div className="row">{this.renderSaved()}</div>
+        </div>
       </div>
     );
   }
