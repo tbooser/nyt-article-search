@@ -35,3 +35,8 @@
 
 .display-article {
   background-color: rgba(65, 94, 140, 0.1); }
+
+.fa-bookmark {
+  display: inline-block; }
+  .fa-bookmark:hover {
+    cursor: pointer; }

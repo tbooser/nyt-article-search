@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import DisplayArticle from "./DisplayArticle";
-import DisplayModal from "./Modal";
+// import DisplayModal from "./Modal";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as actions from "../../actions/index.js";
+import * as displayActions from "../../actions/index.js";
 
 class DisplayContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      articles: []
+    };
     this.renderArticles = this.renderArticles.bind(this);
     this.showSearchTermAndNumberOfResults = this.showSearchTermAndNumberOfResults.bind(
       this
@@ -19,7 +21,7 @@ class DisplayContainer extends Component {
   saveArticle(article) {
     console.log("props you are looking for", this.props);
     console.log(article);
-    this.props.actions.actions.saveArticle(article.headline.main);
+    this.props.actions.actions.saveArticle(article);
   }
 
   renderArticles() {
@@ -32,6 +34,7 @@ class DisplayContainer extends Component {
         if (article.document_type === "article") {
           return (
             <DisplayArticle
+              key={Math.random()}
               snippet={article.snippet}
               headline={article.headline.main}
               url={article.web_url}
@@ -39,6 +42,8 @@ class DisplayContainer extends Component {
               onClick={() => this.saveArticle(article)}
             />
           );
+        } else {
+          return;
         }
       });
     }
@@ -84,7 +89,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     actions: {
-      actions: bindActionCreators(actions, dispatch)
+      actions: bindActionCreators(displayActions, dispatch)
     }
   };
 };

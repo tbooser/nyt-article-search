@@ -37,6 +37,7 @@ export const articleSearch = searchTerm => {
 
 export const saveArticle = article => {
   return dispatch => {
+    console.log("article", article);
     dispatch({ article, type: SAVE_ARTICLE });
   };
 };

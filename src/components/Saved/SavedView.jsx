@@ -7,7 +7,7 @@ export class SavedView extends Component {
 	}
 
 	render() {
-		return <div>SavedView</div>;
+		return <div>{this.props.headline}</div>;
 	}
 }
 

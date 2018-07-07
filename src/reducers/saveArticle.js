@@ -7,13 +7,14 @@ const savedArticleState = {
 function saveArticle(state = savedArticleState, action) {
   switch (action.type) {
     case SAVE_ARTICLE:
+      console.log("action", action, action.article);
       return Object.assign(
         {},
         {
           articles: [
-            ...state.savedArticleState,
+            ...state.articles,
             {
-              articles: action.article
+              article: action.article
             }
           ]
         }
