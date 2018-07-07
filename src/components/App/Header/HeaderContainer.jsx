@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
 import SearchView from "../../Search/SearchView";
 import Header from "./Header";
+import SavedButton from "../Buttons/Saved";
 
 class HeaderContainer extends Component {
   constructor(props) {
@@ -19,6 +19,7 @@ class HeaderContainer extends Component {
           </div>
           <div className="col-md-4">
             <SearchView />
+            <SavedButton />
           </div>
         </div>
       </div>
