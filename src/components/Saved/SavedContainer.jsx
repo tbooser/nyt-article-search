@@ -6,49 +6,49 @@ import SavedView from "./SavedView";
 import HomeButton from "../App/Buttons/Home";
 
 export class SavedContainer extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
-		this.renderSaved = this.renderSaved.bind(this);
-	}
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.renderSaved = this.renderSaved.bind(this);
+  }
 
-	componentDidMount() {}
+  componentDidMount() {}
 
-	renderSaved() {
-		let savedArticles = this.props.savedState.saveArticle.articles;
-		console.log(savedArticles);
-		return savedArticles.map(article => {
-			return (
-				<SavedView
-					key={Math.random()}
-					headline={article.article.headline.main}
-				/>
-			);
-		});
-	}
+  renderSaved() {
+    let savedArticles = this.props.savedState.saveArticle.articles;
+    console.log(savedArticles);
+    return savedArticles.map(article => {
+      return (
+        <SavedView
+          key={Math.random()}
+          headline={article.article.headline.main}
+        />
+      );
+    });
+  }
 
-	render() {
-		return (
-			<div>
-				<HomeButton />
-				{this.renderSaved()}
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        <HomeButton />
+        {this.renderSaved()}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-	return {
-		savedState: state
-	};
+  return {
+    savedState: state
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-	return {
-		actions: {
-			savedActions: bindActionCreators(actions, dispatch)
-		}
-	};
+  return {
+    actions: {
+      savedActions: bindActionCreators(actions, dispatch)
+    }
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SavedContainer);

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Moment from "react-moment";
-// import DisplayModal from "./Modal";
 import * as actions from "../../actions/index.js";
 
 class DisplayArticle extends Component {
@@ -17,12 +16,7 @@ class DisplayArticle extends Component {
     this.props.onClick(this.props);
   }
 
-  bookmarkHoverState() {
-    console.log("enter");
-    console.log(this);
-    return (this.className = null);
-    // return <i className="fa fa-bookmark" aria-hidden="true" />;
-  }
+  bookmarkHoverState() {}
 
   render() {
     return (
