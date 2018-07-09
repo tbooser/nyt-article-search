@@ -20,9 +20,7 @@ export const setCurrentSearchTerm = searchTerm => {
 export const articleSearch = searchTerm => {
   return dispatch => {
     fetch(
-      "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" +
-        keys.default +
-        "&q=" +
+      "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=65c543eb88c7453fb4a7ee8f300ea807&q=" +
         searchTerm
     )
       .then(response => {
