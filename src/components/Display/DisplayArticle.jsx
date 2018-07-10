@@ -3,29 +3,35 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Moment from "react-moment";
 import * as actions from "../../actions/index.js";
+import Bookmark from "../App/Buttons/BookmarkIcons/Bookmark";
 
 class DisplayArticle extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      active: false
+    };
 
-    this.saveArticle = this.saveArticle.bind(this);
+    this.bookmark = this.bookmark.bind(this);
   }
 
-  saveArticle() {
-    this.props.onClick(this.props);
+  flip() {
+    if (this.state.active === false) {
+      this.setState({ active: true });
+    } else if (this.state.active === true) {
+      this.setState({ active: false });
+    }
   }
 
-  bookmarkHoverState() {}
+  bookmark() {
+    let current = this.state.active;
+    return <Bookmark active={current} onClick={this.flip.bind(this)} />;
+  }
 
   render() {
     return (
       <div className="display-article list-group-item justify-content-start mb-5 p-3">
-        <i
-          className="far fa-bookmark d-flex justify-content-end"
-          onClick={this.saveArticle}
-          onMouseEnter={this.bookmarkHoverState.bind(this)}
-        />
+        {this.bookmark()}
         <h4 className="w-100 m-3">{this.props.headline}</h4>
         <h6 className="w-100 m-3 article-date text-info">
           <Moment>{this.props.date}</Moment>

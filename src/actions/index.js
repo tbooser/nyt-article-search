@@ -3,7 +3,6 @@ import {
   SET_CURRENT_SEARCH_TERM,
   SAVE_ARTICLE
 } from "../constants";
-import * as keys from "./keys.js";
 
 export const articleSearchResponse = articles => {
   return dispatch => {
