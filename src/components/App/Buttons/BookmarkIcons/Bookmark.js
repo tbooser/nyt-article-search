@@ -13,17 +13,8 @@ class Bookmark extends Component {
     this.saveArticle = this.saveArticle.bind(this);
   }
 
-  componentDidMount() {
-    console.log("intial", this.props);
-  }
-
-  componentDidUpdate() {
-    console.log("intial", this.props);
-  }
-
   saveArticle() {
     this.props.onClick(this.props);
-    console.log("bokmark props", this.props);
   }
 
   render() {
