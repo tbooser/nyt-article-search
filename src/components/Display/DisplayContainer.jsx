@@ -39,7 +39,7 @@ class DisplayContainer extends Component {
               headline={article.headline.main}
               url={article.web_url}
               date={article.pub_date}
-              onClick={() => this.saveArticle(article)}
+              addToFavorites={() => this.saveArticle(article)}
             />
           );
         } else {
