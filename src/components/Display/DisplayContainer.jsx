@@ -19,8 +19,6 @@ class DisplayContainer extends Component {
   }
 
   saveArticle(article) {
-    console.log("props you are looking for", this.props);
-    console.log(article);
     this.props.actions.actions.saveArticle(article);
   }
 
@@ -30,11 +28,11 @@ class DisplayContainer extends Component {
       let currentArticles = this.props.app.articles.articles[currentIndex]
         .articles.response.docs;
 
-      return currentArticles.map(article => {
+      return currentArticles.map((article, index) => {
         if (article.document_type === "article") {
           return (
             <DisplayArticle
-              key={Math.random()}
+              key={index}
               snippet={article.snippet}
               headline={article.headline.main}
               url={article.web_url}
