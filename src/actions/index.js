@@ -1,7 +1,8 @@
 import {
   ARTICLE_SEARCH_RESPONSE,
   SET_CURRENT_SEARCH_TERM,
-  SAVE_ARTICLE
+  SAVE_ARTICLE,
+  BOOKMARK_ARTICLE
 } from "../constants";
 
 export const articleSearchResponse = articles => {
@@ -35,5 +36,11 @@ export const articleSearch = searchTerm => {
 export const saveArticle = article => {
   return dispatch => {
     dispatch({ article, type: SAVE_ARTICLE });
+  };
+};
+
+export const bookmarkArticle = articleId => {
+  return dispatch => {
+    dispatch({ articleId, type: BOOKMARK_ARTICLE });
   };
 };
