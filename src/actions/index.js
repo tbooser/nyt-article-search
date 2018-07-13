@@ -33,13 +33,15 @@ export const articleSearch = searchTerm => {
   };
 };
 
-export const saveArticle = article => {
+export const saveArticle = (article, articleId) => {
+  console.log(article);
   return dispatch => {
     dispatch({ article, type: SAVE_ARTICLE });
   };
 };
 
 export const bookmarkArticle = articleId => {
+  console.log(articleId);
   return dispatch => {
     dispatch({ articleId, type: BOOKMARK_ARTICLE });
   };

@@ -18,8 +18,8 @@ class DisplayContainer extends Component {
     this.saveArticle = this.saveArticle.bind(this);
   }
 
-  saveArticle(article) {
-    this.props.actions.actions.saveArticle(article);
+  saveArticle(article, articleId) {
+    this.props.actions.actions.saveArticle(article, articleId);
   }
 
   renderArticles() {
@@ -27,17 +27,19 @@ class DisplayContainer extends Component {
       let currentIndex = this.props.app.articles.articles.length - 1;
       let currentArticles = this.props.app.articles.articles[currentIndex]
         .articles.response.docs;
-
+      console.log("Looking for saved articles - > ", this.props);
       return currentArticles.map((article, index) => {
+        let articleId = article._id;
         if (article.document_type === "article") {
           return (
             <DisplayArticle
               key={index}
+              articleId={article._id}
               snippet={article.snippet}
               headline={article.headline.main}
               url={article.web_url}
               date={article.pub_date}
-              addToFavorites={() => this.saveArticle(article)}
+              addToFavorites={() => this.saveArticle(article, articleId)}
             />
           );
         } else {
