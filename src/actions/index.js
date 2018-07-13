@@ -34,9 +34,10 @@ export const articleSearch = searchTerm => {
 };
 
 export const saveArticle = (article, articleId) => {
-  console.log(article);
+  console.log(article, articleId, "ARTICLE ID");
   return dispatch => {
     dispatch({ article, type: SAVE_ARTICLE });
+    dispatch(bookmarkArticle(articleId));
   };
 };
 

@@ -16,10 +16,28 @@ class DisplayContainer extends Component {
       this
     );
     this.saveArticle = this.saveArticle.bind(this);
+    this.checkForBookmarkMatch = this.checkForBookmarkMatch.bind(this);
   }
 
   saveArticle(article, articleId) {
     this.props.actions.actions.saveArticle(article, articleId);
+    // console.log("DisplayContainer getting called");
+  }
+
+  checkForBookmarkMatch(articleId) {
+    // console.log("Bookmarks ", this.props.app.bookmarks.bookmarks);
+    console.log(articleId, "check for id");
+    let bookmarks = this.props.app.bookmarks.bookmarks;
+
+    let bookmarked = false;
+
+    bookmarks.forEach(item => {
+      console.log(item.bookmark, "check for item bookmark");
+      if (item.bookmark === articleId) {
+        bookmarked = true;
+      }
+    });
+    return bookmarked;
   }
 
   renderArticles() {
@@ -27,9 +45,11 @@ class DisplayContainer extends Component {
       let currentIndex = this.props.app.articles.articles.length - 1;
       let currentArticles = this.props.app.articles.articles[currentIndex]
         .articles.response.docs;
-      console.log("Looking for saved articles - > ", this.props);
       return currentArticles.map((article, index) => {
         let articleId = article._id;
+        let bookmarkStatus = this.checkForBookmarkMatch(articleId);
+        // console.log(this.checkForBookmarkMatch(articleId), "t/f");
+        console.log(bookmarkStatus, "status");
         if (article.document_type === "article") {
           return (
             <DisplayArticle
@@ -40,6 +60,7 @@ class DisplayContainer extends Component {
               url={article.web_url}
               date={article.pub_date}
               addToFavorites={() => this.saveArticle(article, articleId)}
+              bookmarked={bookmarkStatus}
             />
           );
         } else {

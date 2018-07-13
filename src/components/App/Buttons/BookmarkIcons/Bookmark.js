@@ -15,6 +15,7 @@ class Bookmark extends Component {
 
   saveArticle() {
     this.props.onClick();
+    console.log("Getting called");
   }
 
   render() {

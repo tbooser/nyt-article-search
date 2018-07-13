@@ -9,7 +9,7 @@ class DisplayArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: this.props.bookmarked
     };
 
     this.bookmark = this.bookmark.bind(this);
@@ -17,41 +17,35 @@ class DisplayArticle extends Component {
     this.addToFavorites = this.addToFavorites.bind(this);
   }
 
-  componentDidUpdate() {
-    this.matchIdForBookmark();
-  }
-
   matchIdForBookmark(id) {
     let articles = this.props.app.saveArticle.articles;
     articles.forEach(article => {
-      if (article.article._id === this.props.articleId) {
-        this.flip.bind(this);
-      }
+      // if (article.article._id === this.props.articleId) {
+      //   this.flip();
+      // }
+      console.log(article.article._id, "match the id");
     });
-    console.log(this.props.articleId);
   }
 
   flip() {
     // Flip active state to toggle white/black bookmark icon
-
     if (this.state.active === false) {
       this.setState({ active: true });
     } else if (this.state.active === true) {
       this.setState({ active: false });
     }
-
-    // Call action to add to favorites
-
-    this.addToFavorites();
   }
 
   addToFavorites() {
-    this.props.addToFavorites(this);
+    this.props.addToFavorites(this.props.articleId);
+    this.matchIdForBookmark();
   }
 
   bookmark() {
     let current = this.state.active;
-    return <Bookmark active={current} onClick={this.addToFavorites()} />;
+    return (
+      <Bookmark active={current} onClick={this.addToFavorites.bind(this)} />
+    );
   }
 
   render() {
@@ -60,9 +54,6 @@ class DisplayArticle extends Component {
         {this.bookmark()}
         <h4 className="w-100 m-3">{this.props.articleId}</h4>
         <h4 className="w-100 m-3">{this.props.headline}</h4>
-        <h6 className="w-100 m-3 article-date text-info">
-          <Moment>{this.props.date}</Moment>
-        </h6>
         <div className="w-100 m-3">{this.props.snippet}</div>
         <h5 className="w-100 m-3">
           <a
@@ -73,6 +64,9 @@ class DisplayArticle extends Component {
             <i className="fas fa-glasses" />
           </a>
         </h5>
+        <h6 className="w-100 m-3 article-date text-info">
+          <Moment>{this.props.date}</Moment>
+        </h6>
       </div>
     );
   }
