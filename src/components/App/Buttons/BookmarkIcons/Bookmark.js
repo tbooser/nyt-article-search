@@ -14,7 +14,7 @@ class Bookmark extends Component {
   }
 
   saveArticle() {
-    this.props.onClick(this.props);
+    this.props.onClick();
   }
 
   render() {

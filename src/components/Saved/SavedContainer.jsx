@@ -16,7 +16,7 @@ export class SavedContainer extends Component {
 
   renderSaved() {
     let savedArticles = this.props.savedState.saveArticle.articles;
-    console.log(savedArticles);
+    console.log("savedArticles", savedArticles);
     return savedArticles.map(article => {
       return (
         <SavedView
