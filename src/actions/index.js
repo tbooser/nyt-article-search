@@ -2,7 +2,9 @@ import {
   ARTICLE_SEARCH_RESPONSE,
   SET_CURRENT_SEARCH_TERM,
   SAVE_ARTICLE,
-  BOOKMARK_ARTICLE
+  BOOKMARK_ARTICLE,
+  UNSAVE_ARTICLE,
+  REMOVE_BOOKMARKED_ARTICLE
 } from "../constants";
 
 export const articleSearchResponse = articles => {
@@ -34,9 +36,25 @@ export const articleSearch = searchTerm => {
 };
 
 export const saveArticle = (article, articleId) => {
-  console.log(article);
+  console.log(article, articleId, "ARTICLE ID");
   return dispatch => {
     dispatch({ article, type: SAVE_ARTICLE });
+    dispatch(bookmarkArticle(articleId));
+  };
+};
+
+export const unsaveArticle = (article, articleId) => {
+  console.log(article, articleId, "REMOVE FROM SAVED");
+  return dispatch => {
+    dispatch({ article, type: UNSAVE_ARTICLE });
+    dispatch(removeBookmarkedArticle(articleId));
+  };
+};
+
+export const removeBookmarkedArticle = articleId => {
+  console.log("REMOVE_BOOKMARKED_ARTICLE");
+  return dispatch => {
+    dispatch({ articleId, type: REMOVE_BOOKMARKED_ARTICLE });
   };
 };
 

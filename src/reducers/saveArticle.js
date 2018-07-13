@@ -1,4 +1,4 @@
-import { SAVE_ARTICLE } from "../constants";
+import { SAVE_ARTICLE, UNSAVE_ARTICLE } from "../constants";
 
 const savedArticleState = {
   articles: []
@@ -7,7 +7,6 @@ const savedArticleState = {
 function saveArticle(state = savedArticleState, action) {
   switch (action.type) {
     case SAVE_ARTICLE:
-      console.log("action", action, action.article);
       return Object.assign(
         {},
         {
@@ -19,9 +18,19 @@ function saveArticle(state = savedArticleState, action) {
           ]
         }
       );
+    case UNSAVE_ARTICLE:
+      return Object.assign(
+        {},
+        {
+          articles: [...state.articles].filter((article, index) => {
+            return article.article._id !== action.article._id;
+          })
+        }
+      );
     default:
       return state;
   }
 }
 
 export default saveArticle;
+

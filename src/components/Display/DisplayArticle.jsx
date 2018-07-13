@@ -9,60 +9,51 @@ class DisplayArticle extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false
+      active: this.props.bookmarked
     };
 
     this.bookmark = this.bookmark.bind(this);
-    this.matchIdForBookmark = this.matchIdForBookmark.bind(this);
-    this.addToFavorites = this.addToFavorites.bind(this);
-  }
-
-  componentDidUpdate() {
-    this.matchIdForBookmark();
-  }
-
-  matchIdForBookmark(id) {
-    let articles = this.props.app.saveArticle.articles;
-    articles.forEach(article => {
-      if (article.article._id === this.props.articleId) {
-        this.flip.bind(this);
-      }
-    });
-    console.log(this.props.articleId);
+    this.addToSaved = this.addToSaved.bind(this);
+    this.removeFromSaved = this.removeFromSaved.bind(this);
   }
 
   flip() {
     // Flip active state to toggle white/black bookmark icon
-
     if (this.state.active === false) {
       this.setState({ active: true });
     } else if (this.state.active === true) {
       this.setState({ active: false });
     }
-
-    // Call action to add to favorites
-
-    this.addToFavorites();
   }
 
-  addToFavorites() {
-    this.props.addToFavorites(this);
+  removeFromSaved() {
+    this.props.removeFromSaved(this.props.articleId);
+    this.flip();
+  }
+
+  addToSaved() {
+    this.props.addToSaved(this.props.articleId);
+    this.flip();
+  }
+
+  favorite() {
+    if (this.state.active === true) {
+      this.removeFromSaved();
+    } else {
+      this.addToSaved();
+    }
   }
 
   bookmark() {
     let current = this.state.active;
-    return <Bookmark active={current} onClick={this.addToFavorites()} />;
+    return <Bookmark active={current} onClick={this.favorite.bind(this)} />;
   }
 
   render() {
     return (
       <div className="display-article list-group-item justify-content-start mb-5 p-3">
         {this.bookmark()}
-        <h4 className="w-100 m-3">{this.props.articleId}</h4>
         <h4 className="w-100 m-3">{this.props.headline}</h4>
-        <h6 className="w-100 m-3 article-date text-info">
-          <Moment>{this.props.date}</Moment>
-        </h6>
         <div className="w-100 m-3">{this.props.snippet}</div>
         <h5 className="w-100 m-3">
           <a
@@ -73,6 +64,9 @@ class DisplayArticle extends Component {
             <i className="fas fa-glasses" />
           </a>
         </h5>
+        <h6 className="w-100 m-3 article-date text-info">
+          <Moment>{this.props.date}</Moment>
+        </h6>
       </div>
     );
   }

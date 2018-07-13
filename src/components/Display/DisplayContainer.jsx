@@ -12,14 +12,30 @@ class DisplayContainer extends Component {
       articles: []
     };
     this.renderArticles = this.renderArticles.bind(this);
+    this.saveArticle = this.saveArticle.bind(this);
+    this.checkForBookmarkMatch = this.checkForBookmarkMatch.bind(this);
     this.showSearchTermAndNumberOfResults = this.showSearchTermAndNumberOfResults.bind(
       this
     );
-    this.saveArticle = this.saveArticle.bind(this);
   }
 
   saveArticle(article, articleId) {
     this.props.actions.actions.saveArticle(article, articleId);
+  }
+
+  removeArticle(article, articleId) {
+    this.props.actions.actions.unsaveArticle(article, articleId);
+  }
+
+  checkForBookmarkMatch(articleId) {
+    let bookmarks = this.props.app.bookmarks.bookmarks;
+    let bookmarked = false;
+    bookmarks.forEach(item => {
+      if (item.id === articleId) {
+        bookmarked = true;
+      }
+    });
+    return bookmarked;
   }
 
   renderArticles() {
@@ -27,9 +43,9 @@ class DisplayContainer extends Component {
       let currentIndex = this.props.app.articles.articles.length - 1;
       let currentArticles = this.props.app.articles.articles[currentIndex]
         .articles.response.docs;
-      console.log("Looking for saved articles - > ", this.props);
       return currentArticles.map((article, index) => {
         let articleId = article._id;
+        let bookmarkStatus = this.checkForBookmarkMatch(articleId);
         if (article.document_type === "article") {
           return (
             <DisplayArticle
@@ -39,7 +55,9 @@ class DisplayContainer extends Component {
               headline={article.headline.main}
               url={article.web_url}
               date={article.pub_date}
-              addToFavorites={() => this.saveArticle(article, articleId)}
+              addToSaved={() => this.saveArticle(article, articleId)}
+              removeFromSaved={() => this.removeArticle(article, articleId)}
+              bookmarked={bookmarkStatus}
             />
           );
         } else {
@@ -55,7 +73,6 @@ class DisplayContainer extends Component {
       let hits = this.props.app.articles.articles[currentIndex].articles
         .response.meta.hits;
       let term = this.props.app.currentSearchTerm.terms[currentIndex].terms;
-
       return (
         <div>
           <h4>
