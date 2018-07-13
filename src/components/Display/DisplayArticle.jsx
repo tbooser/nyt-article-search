@@ -13,18 +13,8 @@ class DisplayArticle extends Component {
     };
 
     this.bookmark = this.bookmark.bind(this);
-    this.matchIdForBookmark = this.matchIdForBookmark.bind(this);
-    this.addToFavorites = this.addToFavorites.bind(this);
-  }
-
-  matchIdForBookmark(id) {
-    let articles = this.props.app.saveArticle.articles;
-    articles.forEach(article => {
-      // if (article.article._id === this.props.articleId) {
-      //   this.flip();
-      // }
-      console.log(article.article._id, "match the id");
-    });
+    this.addToSaved = this.addToSaved.bind(this);
+    this.removeFromSaved = this.removeFromSaved.bind(this);
   }
 
   flip() {
@@ -36,23 +26,33 @@ class DisplayArticle extends Component {
     }
   }
 
-  addToFavorites() {
-    this.props.addToFavorites(this.props.articleId);
-    this.matchIdForBookmark();
+  removeFromSaved() {
+    this.props.removeFromSaved(this.props.articleId);
+    this.flip();
+  }
+
+  addToSaved() {
+    this.props.addToSaved(this.props.articleId);
+    this.flip();
+  }
+
+  favorite() {
+    if (this.state.active === true) {
+      this.removeFromSaved();
+    } else {
+      this.addToSaved();
+    }
   }
 
   bookmark() {
     let current = this.state.active;
-    return (
-      <Bookmark active={current} onClick={this.addToFavorites.bind(this)} />
-    );
+    return <Bookmark active={current} onClick={this.favorite.bind(this)} />;
   }
 
   render() {
     return (
       <div className="display-article list-group-item justify-content-start mb-5 p-3">
         {this.bookmark()}
-        <h4 className="w-100 m-3">{this.props.articleId}</h4>
         <h4 className="w-100 m-3">{this.props.headline}</h4>
         <div className="w-100 m-3">{this.props.snippet}</div>
         <h5 className="w-100 m-3">

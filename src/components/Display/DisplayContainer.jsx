@@ -12,28 +12,26 @@ class DisplayContainer extends Component {
       articles: []
     };
     this.renderArticles = this.renderArticles.bind(this);
+    this.saveArticle = this.saveArticle.bind(this);
+    this.checkForBookmarkMatch = this.checkForBookmarkMatch.bind(this);
     this.showSearchTermAndNumberOfResults = this.showSearchTermAndNumberOfResults.bind(
       this
     );
-    this.saveArticle = this.saveArticle.bind(this);
-    this.checkForBookmarkMatch = this.checkForBookmarkMatch.bind(this);
   }
 
   saveArticle(article, articleId) {
     this.props.actions.actions.saveArticle(article, articleId);
-    // console.log("DisplayContainer getting called");
+  }
+
+  removeArticle(article, articleId) {
+    this.props.actions.actions.unsaveArticle(article, articleId);
   }
 
   checkForBookmarkMatch(articleId) {
-    // console.log("Bookmarks ", this.props.app.bookmarks.bookmarks);
-    console.log(articleId, "check for id");
     let bookmarks = this.props.app.bookmarks.bookmarks;
-
     let bookmarked = false;
-
     bookmarks.forEach(item => {
-      console.log(item.bookmark, "check for item bookmark");
-      if (item.bookmark === articleId) {
+      if (item.id === articleId) {
         bookmarked = true;
       }
     });
@@ -48,8 +46,6 @@ class DisplayContainer extends Component {
       return currentArticles.map((article, index) => {
         let articleId = article._id;
         let bookmarkStatus = this.checkForBookmarkMatch(articleId);
-        // console.log(this.checkForBookmarkMatch(articleId), "t/f");
-        console.log(bookmarkStatus, "status");
         if (article.document_type === "article") {
           return (
             <DisplayArticle
@@ -59,7 +55,8 @@ class DisplayContainer extends Component {
               headline={article.headline.main}
               url={article.web_url}
               date={article.pub_date}
-              addToFavorites={() => this.saveArticle(article, articleId)}
+              addToSaved={() => this.saveArticle(article, articleId)}
+              removeFromSaved={() => this.removeArticle(article, articleId)}
               bookmarked={bookmarkStatus}
             />
           );
@@ -76,7 +73,6 @@ class DisplayContainer extends Component {
       let hits = this.props.app.articles.articles[currentIndex].articles
         .response.meta.hits;
       let term = this.props.app.currentSearchTerm.terms[currentIndex].terms;
-
       return (
         <div>
           <h4>

@@ -1,4 +1,4 @@
-import { BOOKMARK_ARTICLE } from "../constants";
+import { BOOKMARK_ARTICLE, REMOVE_BOOKMARKED_ARTICLE } from "../constants";
 
 const bookmarkState = {
   bookmarks: []
@@ -13,9 +13,18 @@ function bookmarks(state = bookmarkState, action) {
           bookmarks: [
             ...state.bookmarks,
             {
-              bookmark: action.articleId
+              id: action.articleId
             }
           ]
+        }
+      );
+    case REMOVE_BOOKMARKED_ARTICLE:
+      return Object.assign(
+        {},
+        {
+          bookmarks: [...state.bookmarks].filter(bookmark => {
+            return bookmark.id !== action.articleId;
+          })
         }
       );
     default:
