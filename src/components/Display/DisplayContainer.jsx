@@ -43,6 +43,7 @@ class DisplayContainer extends Component {
       let currentIndex = this.props.app.articles.articles.length - 1;
       let currentArticles = this.props.app.articles.articles[currentIndex]
         .articles.response.docs;
+
       return currentArticles.map((article, index) => {
         let articleId = article._id;
         let bookmarkStatus = this.checkForBookmarkMatch(articleId);
