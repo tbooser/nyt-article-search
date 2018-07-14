@@ -53,7 +53,8 @@ class DisplayArticle extends Component {
     return (
       <div className="display-article list-group-item justify-content-start mb-5 p-3">
         {this.bookmark()}
-        <h4 className="w-100 m-3">{this.props.headline}</h4>
+        <h4 className="w-100 m-3">{this.props.bookmarked.toString()}</h4>
+        <h4 className="w-100 m-3 text-primary">{this.props.headline}</h4>
         <div className="w-100 m-3">{this.props.snippet}</div>
         <h5 className="w-100 m-3">
           <a

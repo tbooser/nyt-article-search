@@ -9,15 +9,15 @@ export class SavedView extends Component {
 
   render() {
     return (
-      <div className="card col-sm-3">
-        <div className="card-body">
-          <h5 className="card-title">{this.props.headline}</h5>
+      <div className="card border-dark col-sm-3">
+        <div className="card-body d-flex align-items-end align-items-start flex-column">
+          <h5 className="card-title text-primary">{this.props.headline}</h5>
           <h6 className="card-subtitle mb-2 text-muted">
             {" "}
             <Moment>{this.props.date}</Moment>
           </h6>
           <p className="card-text">{this.props.snippet}</p>
-          <h5 className="w-100">
+          <h5 className="w-100 mt-auto">
             <a
               href={this.props.url}
               target="_blank"
