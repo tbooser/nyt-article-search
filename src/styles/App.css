@@ -1,6 +1,10 @@
 .App {
   font-family: sans-serif; }
 
+.sidebar {
+  height: 100%;
+  position: fixed; }
+
 .header {
   font-family: "Alfa Slab One", cursive; }
 
@@ -22,6 +26,9 @@
     outline: none; }
   .search-input-box input {
     outline: none; }
+
+.display-container {
+  overflow: auto; }
 
 .search-input-submit-button {
   background-color: rgba(83, 219, 78, 0.5);

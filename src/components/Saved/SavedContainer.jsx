@@ -31,10 +31,16 @@ export class SavedContainer extends Component {
 
   render() {
     return (
-      <div>
-        <SavedHeader title="Saved Articles" />
-        <div className="container">
-          <div className="row">{this.renderSaved()}</div>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3">
+            <SavedHeader title="Saved Articles" />
+          </div>
+          <div className="col-md-9">
+            <div className="container">
+              <div className="row">{this.renderSaved()}</div>
+            </div>
+          </div>
         </div>
       </div>
     );
