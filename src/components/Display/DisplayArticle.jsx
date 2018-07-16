@@ -19,11 +19,10 @@ class DisplayArticle extends Component {
 
   flip() {
     // Flip active state to toggle white/black bookmark icon
-    if (this.state.active === false) {
-      this.setState({ active: true });
-    } else if (this.state.active === true) {
-      this.setState({ active: false });
-    }
+
+    this.state.active === false
+      ? this.setState({ active: true })
+      : this.setState({ active: false });
   }
 
   removeFromSaved() {
@@ -37,11 +36,7 @@ class DisplayArticle extends Component {
   }
 
   favorite() {
-    if (this.state.active === true) {
-      this.removeFromSaved();
-    } else {
-      this.addToSaved();
-    }
+    this.state.active === true ? this.removeFromSaved() : this.addToSaved();
   }
 
   bookmark() {
