@@ -6,10 +6,8 @@
   position: fixed; }
 
 .header {
-  font-family: "Alfa Slab One", cursive; }
-
-.search-container {
-  display: flex; }
+  font-family: "Alfa Slab One", cursive;
+  padding: 10px; }
 
 .search-input {
   background: rgba(144, 122, 191, 0.7);
@@ -19,7 +17,6 @@
 .search-input-box {
   font-size: 24px;
   min-height: 41px;
-  min-width: 100%;
   outline: none; }
   .search-input-box textarea:focus,
   .search-input-box input:focus {

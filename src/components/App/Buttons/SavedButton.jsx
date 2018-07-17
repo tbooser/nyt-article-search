@@ -3,17 +3,24 @@ import React from "react";
 
 const SavedButton = withRouter(({ history }) => (
   <div className="button-saved">
-    <button
-      type="button"
-      className="btn btn-primary"
-      type="button"
+    <i
+      className="far fa-star"
       onClick={() => {
         history.push("/saved");
       }}
-    >
-      Favorites
-    </button>
+    />
   </div>
 ));
 
 export default SavedButton;
+
+// <button
+//   type="button"
+//   className="btn btn-primary"
+//   type="button"
+//   onClick={() => {
+//     history.push("/saved");
+//   }}
+// >
+//   Favorites
+// </button>

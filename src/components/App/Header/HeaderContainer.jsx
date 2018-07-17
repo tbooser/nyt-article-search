@@ -13,11 +13,11 @@ class HeaderContainer extends Component {
   render() {
     return (
       <div className="sidebar bg-light">
-        <Header h3=" New York Times Article Search" />
+        <Header h5=" New York Times Article Search" />
         <div>
           <SearchView />
         </div>
-        <div className="d-flex justify-content-end">
+        <div className="d-flex">
           <SavedButton />
         </div>
       </div>

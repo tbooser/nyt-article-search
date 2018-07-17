@@ -12,6 +12,7 @@ class SearchView extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.showSearchBox = this.showSearchBox.bind(this);
   }
 
   handleChange(event) {
@@ -25,9 +26,12 @@ class SearchView extends Component {
     this.setState({ searchTerm: "" });
   }
 
+  showSearchBox() {}
+
   render() {
     return (
       <div className="search-input-container">
+        <i className="fas fa-search" onclick={this.showSearchBox} />
         <form onSubmit={this.handleSubmit}>
           <div className="input-group mb-3">
             <input
