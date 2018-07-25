@@ -4,12 +4,21 @@
 
 .sidebar {
   height: 100%;
+  left: 0;
   position: fixed;
 }
 
 .header {
   font-family: "Alfa Slab One", cursive;
   padding: 10px;
+}
+
+.search-input-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 40px;
 }
 
 .search-container {
@@ -66,4 +75,31 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.fa-search {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-saved {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.search-form {
+  width: 90%;
+}
+
+.sidebar-item-container {
+  padding: 10px;
+}
+
+.sidebar-item {
+  margin: 0 0 20px 0;
+}
+
+.button-saved-container {
 }

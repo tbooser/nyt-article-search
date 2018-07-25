@@ -14,11 +14,13 @@ class HeaderContainer extends Component {
     return (
       <div className="sidebar bg-light">
         <Header h5=" New York Times Article Search" />
-        <div>
-          <SearchView />
-        </div>
-        <div className="d-flex">
-          <SavedButton />
+        <div className='sidebar-item-container'>
+          <div className='sidebar-item'>
+            <SearchView />
+          </div>
+          <div className="d-flex sidebar-item">
+            <SavedButton />
+          </div>
         </div>
       </div>
     );
