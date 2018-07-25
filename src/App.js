@@ -12,8 +12,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HeaderContainer />
-        <DisplayContainer />
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-3">
+              <HeaderContainer />
+            </div>
+            <DisplayContainer />
+          </div>
+        </div>
       </div>
     );
   }

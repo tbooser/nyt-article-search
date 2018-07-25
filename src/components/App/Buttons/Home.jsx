@@ -3,16 +3,23 @@ import React from "react";
 
 const HomeButton = withRouter(({ history }) => (
   <div className="button-home d-flex justify-content-start">
-    <button
-      type="button"
-      className="btn btn-primary "
+    <i
+      className="fas fa-home"
       onClick={() => {
         history.push("/");
       }}
-    >
-      Home
-    </button>
+    />
   </div>
 ));
 
 export default HomeButton;
+
+// <button
+//   type="button"
+//   className="btn btn-primary "
+//   onClick={() => {
+//     history.push("/");
+//   }}
+// >
+//   Home
+// </button>;

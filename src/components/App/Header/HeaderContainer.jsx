@@ -12,15 +12,13 @@ class HeaderContainer extends Component {
 
   render() {
     return (
-      <div className="header-container container-fluid d-flex justify-content-around mt-4">
-        <div className="row row justify-content-start">
-          <div className="col-md-6">
-            <Header h1=" New York Times Article Search" />
-          </div>
-          <div className="col-md-3">
+      <div className="sidebar bg-light">
+        <Header h5=" New York Times Article Search" />
+        <div className='sidebar-item-container'>
+          <div className='sidebar-item'>
             <SearchView />
           </div>
-          <div className="col-md-3 d-flex justify-content-end">
+          <div className="d-flex sidebar-item">
             <SavedButton />
           </div>
         </div>

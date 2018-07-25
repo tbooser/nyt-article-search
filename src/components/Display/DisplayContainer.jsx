@@ -88,7 +88,7 @@ class DisplayContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-md-9">
         <div className="container display-container mt-4 list-group">
           <h4>{this.showSearchTermAndNumberOfResults()}</h4>
           {this.renderArticles()}

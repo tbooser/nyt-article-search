@@ -7,15 +7,26 @@ class SearchView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchTerm: ""
+      searchTerm: "",
+      searchClicked: false
     };
 
+    this.flipSearchBoxState = this.flipSearchBoxState.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.showSearchBox = this.showSearchBox.bind(this);
   }
 
   handleChange(event) {
     this.setState({ searchTerm: event.target.value });
+  }
+
+  flipSearchBoxState() {
+    if (this.state.searchClicked === false) {
+      this.setState({ searchClicked: true });
+    } else {
+      this.setState({ searchClicked: false });
+    }
   }
 
   handleSubmit(event) {
@@ -25,11 +36,11 @@ class SearchView extends Component {
     this.setState({ searchTerm: "" });
   }
 
-  render() {
-    return (
-      <div className="search-input-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="input-group mb-3">
+  showSearchBox() {
+    if (this.state.searchClicked === true) {
+      return (
+        <form className='search-form' onSubmit={this.handleSubmit}>
+          <div className="input-group">
             <input
               onChange={this.handleChange}
               type="text"
@@ -46,6 +57,15 @@ class SearchView extends Component {
             </div>
           </div>
         </form>
+      );
+    }
+  }
+
+  render() {
+    return (
+      <div className="search-input-container">
+        <i className="fas fa-search" onClick={this.flipSearchBoxState} />
+        {this.showSearchBox()}
       </div>
     );
   }

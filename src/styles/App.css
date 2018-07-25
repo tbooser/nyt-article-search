@@ -1,11 +1,21 @@
 .App {
   font-family: sans-serif; }
 
-.header {
-  font-family: "Alfa Slab One", cursive; }
+.sidebar {
+  height: 100%;
+  left: 0;
+  position: fixed; }
 
-.search-container {
-  display: flex; }
+.header {
+  font-family: "Alfa Slab One", cursive;
+  padding: 10px; }
+
+.search-input-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 40px; }
 
 .search-input {
   background: rgba(144, 122, 191, 0.7);
@@ -15,13 +25,15 @@
 .search-input-box {
   font-size: 24px;
   min-height: 41px;
-  min-width: 100%;
   outline: none; }
   .search-input-box textarea:focus,
   .search-input-box input:focus {
     outline: none; }
   .search-input-box input {
     outline: none; }
+
+.display-container {
+  overflow: auto; }
 
 .search-input-submit-button {
   background-color: rgba(83, 219, 78, 0.5);
@@ -40,3 +52,18 @@
   display: inline-block; }
   .fa-bookmark:hover {
     cursor: pointer; }
+
+.fa-search:hover {
+  cursor: pointer; }
+
+.button-saved:hover {
+  cursor: pointer; }
+
+.search-form {
+  width: 90%; }
+
+.sidebar-item-container {
+  padding: 10px; }
+
+.sidebar-item {
+  margin: 0 0 20px 0; }

@@ -2,33 +2,39 @@
   font-family: sans-serif;
 }
 
-// .header-container {
-//  align-items: center;
-//  display: flex;
-//  justify-content: center;
-// }
+.sidebar {
+  height: 100%;
+  left: 0;
+  position: fixed;
+}
 
 .header {
   font-family: "Alfa Slab One", cursive;
+  padding: 10px;
+}
+
+.search-input-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 40px;
 }
 
 .search-container {
-  display: flex;
+  // display: flex;
 }
 
 .search-input {
   background: rgba(144, 122, 191, 0.7);
-  // display: flex;
   padding: 30px;
   text-align: center;
-  // flex-direction: row;
-  // justify-content: space-between;
 }
 
 .search-input-box {
   font-size: 24px;
   min-height: 41px;
-  min-width: 100%;
+  // min-width: 100%;
 
   textarea:focus,
   input:focus {
@@ -43,6 +49,9 @@
 .submit-button-container {
 }
 
+.display-container {
+  overflow: auto;
+}
 .search-input-submit-button {
   background-color: rgba(83, 219, 78, 0.5);
   border: none;
@@ -66,4 +75,31 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.fa-search {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.button-saved {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.search-form {
+  width: 90%;
+}
+
+.sidebar-item-container {
+  padding: 10px;
+}
+
+.sidebar-item {
+  margin: 0 0 20px 0;
+}
+
+.button-saved-container {
 }
