@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SearchView from "../../Search/SearchView";
-import Header from "./Header";
+import Sidebar from "./Sidebar";
 import SavedButton from "../Buttons/SavedButton";
+import HomeButton from "../Buttons/Home";
 
-class HeaderContainer extends Component {
+class SidebarContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -13,9 +14,10 @@ class HeaderContainer extends Component {
   render() {
     return (
       <div className="sidebar bg-light">
-        <Header h5=" New York Times Article Search" />
-        <div className='sidebar-item-container'>
-          <div className='sidebar-item'>
+        <HomeButton />
+        <Sidebar h5={this.props.title} />
+        <div className="sidebar-item-container">
+          <div className="sidebar-item">
             <SearchView />
           </div>
           <div className="d-flex sidebar-item">
@@ -33,4 +35,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(HeaderContainer);
+export default connect(mapStateToProps)(SidebarContainer);

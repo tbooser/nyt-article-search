@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Header from "../App/Header/Header";
+import Sidebar from "../App/Sidebar/Sidebar";
 import HomeButton from "../App/Buttons/Home";
 
-class SavedHeader extends Component {
+class SavedSidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -12,7 +12,7 @@ class SavedHeader extends Component {
   render() {
     return (
       <div className="sidebar bg-light">
-        <Header h3=" New York Times Article Search" />
+        <Sidebar h3=" New York Times Article Search" />
         <div className="d-flex justify-content-end">
           <HomeButton />
         </div>
@@ -27,4 +27,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(SavedHeader);
+export default connect(mapStateToProps)(SavedSidebar);

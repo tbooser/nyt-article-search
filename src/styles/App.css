@@ -4,10 +4,13 @@
 .sidebar {
   height: 100%;
   left: 0;
+  min-width: 20%;
   position: fixed; }
 
 .header {
+  display: flex;
   font-family: "Alfa Slab One", cursive;
+  justify-content: center;
   padding: 10px; }
 
 .search-input-container {

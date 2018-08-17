@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../../actions/index.js";
 import SavedView from "./SavedView";
-import SavedHeader from "./SavedHeader";
+import SavedSidebar from "./SavedSidebar";
+import SidebarContainer from "../App/Sidebar/SidebarContainer";
 
 export class SavedContainer extends Component {
   constructor(props) {
@@ -34,9 +35,9 @@ export class SavedContainer extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-3">
-            <SavedHeader title="Saved Articles" />
+            <SidebarContainer title="Saved Articles" />
           </div>
-          <div className="col-md-9">
+          <div className="col-md-9 mt-3">
             <div className="container">
               <div className="row">{this.renderSaved()}</div>
             </div>

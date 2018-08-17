@@ -4,6 +4,7 @@ import DisplayArticle from "./DisplayArticle";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as displayActions from "../../actions/index.js";
+import LoadingSpinner from "../App/Images/Spinners/LoadingSpinner";
 
 class DisplayContainer extends Component {
   constructor(props) {
